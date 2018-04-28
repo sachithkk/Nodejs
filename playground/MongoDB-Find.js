@@ -7,7 +7,22 @@ MongoClient.connect("mongodb://localhost:27017/TodoApp", (err, db) => {
 
   console.log("Conection Succesful");
 
-  db.collection('bike').find().toArray().then((docs) => {
+  /*
+      this is the way of find all the data from database
+  */
+  // db.collection('bike').find().toArray().then((docs) => {
+  //   console.log(JSON.stringify(docs,undefined,2));
+  // }, (err) => {
+  //   if(err){
+  //     console.log("Unable to fetch data from Bike",err);
+  //   }
+  //
+  // });
+
+  /*
+      this is the way of find a filtering data
+  */
+  db.collection('bike').find({power:"600cc"}).toArray().then((docs) => {
     console.log(JSON.stringify(docs,undefined,2));
   }, (err) => {
     if(err){
