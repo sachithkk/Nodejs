@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/TodoApp');
 
+// create model.
 var Todo = mongoose.model('Todo', {
   text:{
     type:String
@@ -15,10 +16,14 @@ var Todo = mongoose.model('Todo', {
   }
 });
 
+
+// set values
 var newTodo = new Todo({
   text: "Cook dinner"
 });
 
+
+// save into database
 newTodo.save().then((doc) => {
   console.log("Save data !");
 }, (err) => {
